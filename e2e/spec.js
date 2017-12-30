@@ -1,9 +1,9 @@
 describe('Protractor Demo App', function() {
-  var firstNumber = element(by.model('first'));
-  var secondNumber = element(by.model('second'));
-  var goButton = element(by.id('gobutton'));
-  var latestResult = element(by.binding('latest'));
-  var history = element.all(by.repeater('result in memory'));
+  const firstNumber = element(by.model('first'));
+  const secondNumber = element(by.model('second'));
+  const goButton = element(by.id('gobutton'));
+  const latestResult = element(by.binding('latest'));
+  const history = element.all(by.repeater('result in memory'));
 
   function add(a, b) {
     firstNumber.sendKeys(a);
@@ -17,12 +17,13 @@ describe('Protractor Demo App', function() {
 
   it('should have a history', function() {
     add(1, 2);
+    browser.sleep(5000);
     add(3, 4);
 
     expect(history.count()).toEqual(2);
 
     add(5, 6);
-
+    browser.sleep(5000);
     expect(history.last().getText()).toContain('1 + 2'); // This is wrong!
   });
 });
